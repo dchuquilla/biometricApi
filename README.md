@@ -1,4 +1,4 @@
-# niometricapi
+# Biometricapi
 This project exposes some endpoints to work with biometrics like faces recognition, DNI ocr, signs matching, and finally an onboarding proccess to sing a document with OneShot a service of Uanataca.
 
 # Under construccion
