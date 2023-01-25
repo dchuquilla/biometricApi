@@ -30,6 +30,8 @@
     "mailgun.js": "^8.0.2",
     "moment": "^2.29.4",
     "node-forge": "^1.3.1",
+    "pdf-parse": "^1.1.1",
+    "pdf2json": "^3.0.2",
     "python-shell": "^3.0.1",
     "qr-image": "^3.2.0",
     "request": "^2.88.2",

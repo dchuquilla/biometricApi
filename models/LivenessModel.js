@@ -5,8 +5,8 @@ module.exports = class Liveness {
       cb(response)
     })
   }
-  static async requestAnalize(image, cb) {
-    livenessService.requestAnalyze(image, response => {
+  static async requestAnalize(image, type, cb) {
+    livenessService.requestAnalyze(image, type, response => {
       if(response.status === 'requested'){
         cb({status: 200, data: response.details})
       } else {

@@ -14,7 +14,9 @@ module.exports = class LivenessController {
   }
 
   static async request (req, res, next, keyObject) {
-    Liveness.requestAnalize(req.body.image, (response) => {
+    let {image, userRef, type} = req.body
+    type ||= 'selfie'
+    Liveness.requestAnalize(image, type, (response) => {
       if(response.status === 200){
         const transaction = transactions.logTrans({
           status: 'new',
@@ -22,8 +24,8 @@ module.exports = class LivenessController {
           account: keyObject.user.account,
           productCode: 'p3',
           response: "pending",
-          userRef: req.body.userRef,
-          input: req.body.image
+          userRef: userRef,
+          input: image
         })
         response.data["api_evidence"] = transaction.evidence
         res.json({status: 200, msg: 'ok', details: response.data})

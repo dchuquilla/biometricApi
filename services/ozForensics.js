@@ -46,13 +46,33 @@ module.exports = {
       })
   },
 
-  requestAnalyze: (image, cb) => {
+  requestAnalyze: (image, type, cb) => {
     const imagePath = tools.stringToFile(image, 'liveness', 'jpeg')
     tools.compressZip(imagePath, filePath => {
       const data = new FormData()
-      data.append('payload', '{"media:tags":{"photo1":["video_selfie_blank"]}}')
+      let tag = ''
+      let tagType = ''
+      let analyzeType = ''
+      switch (type) {
+        case 'video':
+          tag = 'video1'
+          tagType = `"${tag}":["video_selfie_blank"]`
+          analyzeType = 'BIOMETRY'
+          break;
+        case 'selfie':
+          tag = 'photo1'
+          tagType = `"${tag}":["video_selfie_blank"]`
+          analyzeType = 'QUALITY'
+          break;
+        default:
+          tag = 'photo1'
+          tagType = `"${tag}":["video_selfie_blank"]`
+          analyzeType = 'QUALITY'
+          break;
+      }
+      data.append('payload', `{"media:tags":{${tagType}}}`)
       data.append(
-        'photo1',
+        tag,
         fs.createReadStream(filePath),
         path.basename(filePath)
       )
@@ -82,7 +102,7 @@ module.exports = {
             data: JSON.stringify({
               analyses: [
                 {
-                  type: 'QUALITY',
+                  type: analyzeType,
                   source_media: [uploadResponse.data.media[0].media_id]
                 }
               ],

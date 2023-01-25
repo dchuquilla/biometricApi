@@ -64,11 +64,11 @@ module.exports = class OneShotController {
                         ref: req.body.ref,
                         apiToken: req.body.apiToken
                       })
-                      return fetch({
+                      return axios({
                         method: 'post',
                         url: req.body.webhook,
                         headers: { 'Content-Type': 'application/json' },
-                        body: webHookOptions
+                        data: webHookOptions
                       })
                         .then(response => console.log('bot hook response: [2]', response.data))
                         .catch(err => console.log('Bot hook error [2]: ', err))
@@ -90,7 +90,7 @@ module.exports = class OneShotController {
                 method: 'post',
                 url: req.body.webhook,
                 headers: { 'Content-Type': 'application/json' },
-                body: webHookOptions
+                data: webHookOptions
               })
                 .then(response => console.log('bot hook response: [3]', response.data))
                 .catch(err => console.log('Bot hook error [3]: ', err))
@@ -111,7 +111,7 @@ module.exports = class OneShotController {
           method: 'post',
           url: req.body.webhook,
           headers: { 'Content-Type': 'application/json' },
-          body: webHookOptions
+          data: webHookOptions
         })
           .then(response => console.log('bot hook response: [4]', response.data))
           .catch(err => console.log('Bot hook error [4]: ', err))
@@ -156,7 +156,7 @@ module.exports = class OneShotController {
                 method: 'post',
                 url: req.body.webhook,
                 headers: { 'Content-Type': 'application/json' },
-                body: webHookOptions
+                data: webHookOptions
               })
                 .then(response => console.log('bot hook response: [5]', response.data))
                 .catch(err => console.log('Bot hook error [5]: ', err))
@@ -170,11 +170,11 @@ module.exports = class OneShotController {
                 apiToken: req.body.apiToken
               })
               console.log('webHookOptions', webHookOptions)
-              return fetch({
+              return axios({
                 method: 'post',
                 url: req.body.webhook,
                 headers: { 'Content-Type': 'application/json' },
-                body: webHookOptions
+                data: webHookOptions
               })
                 .then(response => console.log('bot hook response: [6]', response.data))
                 .catch(err => console.log('Bot hook error [6]: ', err))
@@ -191,7 +191,7 @@ module.exports = class OneShotController {
           apiToken: req.body.apiToken
         })
         console.log('webHookOptions', webHookOptions)
-        return fetch({
+        return axios({
           method: 'post',
           url: req.body.webhook,
           headers: { 'Content-Type': 'application/json' },

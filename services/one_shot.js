@@ -195,9 +195,15 @@ module.exports = {
               }`
               const document = params.documents[0]
               let documentOptions = {}
+              const page = 0
+              const x1 = 100
+              const y1 = 100
+              const width = 250
+              const height = 60
+              const position = [x1, y1, x1+width, y1+height]
               documentOptions[document] = {
-                position: '100, 100, 350, 160',
-                page: 0,
+                position: position.join(', '),
+                page: page,
                 image: json1.details
               }
               const options = {

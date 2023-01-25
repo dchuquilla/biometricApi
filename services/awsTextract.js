@@ -30,7 +30,8 @@ module.exports = {
           const total = confidences.reduce((acum, val) => acum + val)
           const avg = total / confidences.length
           const med = confidences[parseInt(confidences.length / 2)]
-          if (keyValueCount < 9) {
+          if (keyValueCount < 3) {
+            console.log('Imagen no corresponde con un documento de identidad -> keyValueCount: ', keyValueCount)
             return cb({
               status: 409,
               msg: 'Imagen no corresponde con un documento de identidad'
